@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrielbrusyeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ClientSet">
+    <Key>
+      <PropertyRef Name="ClientCode" />
+    </Key>
+    <Property Name="ClientCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassportData" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfBirthday" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderSet" Relationship="Self.FK_ClientOrder" FromRole="ClientSet" ToRole="OrderSet" />
+  </EntityType>
+  <EntityType Name="EmployeeSet">
+    <Key>
+      <PropertyRef Name="EmployeeCode" />
+    </Key>
+    <Property Name="EmployeeCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="LoginHistorySet" Relationship="Self.FK_EmployeeLoginHistory" FromRole="EmployeeSet" ToRole="LoginHistorySet" />
+  </EntityType>
+  <EntityType Name="LoginHistorySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EmployeeSet" Relationship="Self.FK_EmployeeLoginHistory" FromRole="LoginHistorySet" ToRole="EmployeeSet" />
+  </EntityType>
+  <EntityType Name="OrderService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Order_Id" Type="Int32" Nullable="false" />
+    <Property Name="Service_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderSet" Relationship="Self.FK_OrderService_Order" FromRole="OrderService" ToRole="OrderSet" />
+    <NavigationProperty Name="ServiceSet" Relationship="Self.FK_OrderService_Service" FromRole="OrderService" ToRole="ServiceSet" />
+  </EntityType>
+  <EntityType Name="OrderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateCreation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TimeOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RentalTime" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateClosing" Type="DateTime" Precision="3" />
+    <Property Name="ClientCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ClientSet" Relationship="Self.FK_ClientOrder" FromRole="OrderSet" ToRole="ClientSet" />
+    <NavigationProperty Name="OrderService" Relationship="Self.FK_OrderService_Order" FromRole="OrderSet" ToRole="OrderService" />
+  </EntityType>
+  <EntityType Name="ServiceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderService" Relationship="Self.FK_OrderService_Service" FromRole="ServiceSet" ToRole="OrderService" />
+  </EntityType>
+  <Association Name="FK_ClientOrder">
+    <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+    <End Role="OrderSet" Type="Self.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientSet">
+        <PropertyRef Name="ClientCode" />
+      </Principal>
+      <Dependent Role="OrderSet">
+        <PropertyRef Name="ClientCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeLoginHistory">
+    <End Role="EmployeeSet" Type="Self.EmployeeSet" Multiplicity="1" />
+    <End Role="LoginHistorySet" Type="Self.LoginHistorySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeSet">
+        <PropertyRef Name="EmployeeCode" />
+      </Principal>
+      <Dependent Role="LoginHistorySet">
+        <PropertyRef Name="EmployeeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderService_Order">
+    <End Role="OrderSet" Type="Self.OrderSet" Multiplicity="1" />
+    <End Role="OrderService" Type="Self.OrderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderService">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderService_Service">
+    <End Role="ServiceSet" Type="Self.ServiceSet" Multiplicity="1" />
+    <End Role="OrderService" Type="Self.OrderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderService">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrielbrusyeDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
+    <EntitySet Name="EmployeeSet" EntityType="Self.EmployeeSet" />
+    <EntitySet Name="LoginHistorySet" EntityType="Self.LoginHistorySet" />
+    <EntitySet Name="OrderService" EntityType="Self.OrderService" />
+    <EntitySet Name="OrderSet" EntityType="Self.OrderSet" />
+    <EntitySet Name="ServiceSet" EntityType="Self.ServiceSet" />
+    <AssociationSet Name="FK_ClientOrder" Association="Self.FK_ClientOrder">
+      <End Role="ClientSet" EntitySet="ClientSet" />
+      <End Role="OrderSet" EntitySet="OrderSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLoginHistory" Association="Self.FK_EmployeeLoginHistory">
+      <End Role="EmployeeSet" EntitySet="EmployeeSet" />
+      <End Role="LoginHistorySet" EntitySet="LoginHistorySet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderService_Order" Association="Self.FK_OrderService_Order">
+      <End Role="OrderSet" EntitySet="OrderSet" />
+      <End Role="OrderService" EntitySet="OrderService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderService_Service" Association="Self.FK_OrderService_Service">
+      <End Role="ServiceSet" EntitySet="ServiceSet" />
+      <End Role="OrderService" EntitySet="OrderService" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

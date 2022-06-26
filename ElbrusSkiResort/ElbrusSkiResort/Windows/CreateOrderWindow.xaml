@@ -1,0 +1,70 @@
+﻿<Window x:Class="ElbrusSkiResort.Windows.CreateOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElbrusSkiResort.Windows"
+        mc:Ignorable="d"
+        Title="Формирование заказа" Height="750" Width="800" MaxHeight="750" MaxWidth="900" MinHeight="750" MinWidth="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100">
+            </RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="#76e383" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Image Height="70" Margin="40 0 0 0">
+                <Image.Source>/Resources/logo.ico</Image.Source>
+            </Image>
+            <TextBlock Text="Приэльбрусье" FontSize="30" Margin="10 0 0 0" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="0:00:00" x:Name="timer_display" FontFamily="Comic Sans MS" Foreground="White" FontSize="23" VerticalAlignment="Center" Margin="30 0 0 0"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
+            <TextBlock Text="Формирование заказа" Margin="40 50 0 0"></TextBlock>
+            <Label Content="Время проката (в часах)" Margin="40 40 0 0" FontFamily="Comic Sans MS" FontSize="16" Foreground="DimGray"></Label>
+            <TextBox x:Name="tbox_timeRental" HorizontalAlignment="Left" Margin="40 0 0 0" Width="200" KeyUp="tbox_baraCode_KeyUp"></TextBox>
+            <Label Content="Код заказа" Margin="40 10 0 0" FontFamily="Comic Sans MS" FontSize="16" Foreground="DimGray"></Label>
+            <TextBox x:Name="tbox_baraCode" HorizontalAlignment="Left" Width="200" Margin="40 0 0 0" KeyUp="tbox_baraCode_KeyUp"></TextBox>
+        </StackPanel>
+        <StackPanel x:Name="selection_panel" Visibility="Hidden" Orientation="Vertical" Grid.Row="3" Grid.ColumnSpan="2">
+            <Label Content="Выберите клиента" Margin="40 0 0 0" FontFamily="Comic Sans MS" FontSize="16" Foreground="DimGray"></Label>
+            <TextBox x:Name="tbox_clients_search" Width="200" TextChanged="tbox_clients_search_TextChanged" Height="20" FontSize="13" HorizontalAlignment="Left" Margin="40 0 0 5">
+                <TextBox.ToolTip>
+                    <ToolTip>Поиск по фамилии</ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+            <ComboBox Width="200" x:Name="cbox_clients" SelectedIndex="0" SelectedValuePath="ClientCode" HorizontalAlignment="Left" Margin="40 0 0 0" KeyUp="tbox_baraCode_KeyUp" DisplayMemberPath="ClientCode"></ComboBox>
+            <Button x:Name="btn_add_client" Click="btn_add_client_Click" Background="LightGray" Foreground="Black" Content="Добавить" Width="70" Height="30" Margin="-220 -30 0 0"></Button>
+            <Button x:Name="btn_refresh_clients_list" Click="btn_refresh_clients_list_Click" Background="LightGray" Foreground="Black" Content="Обновить" Width="70" Height="30" Margin="-60 -30 0 0"></Button>
+            <Label Content="Выберите услугу" Margin="40 10 0 0" FontFamily="Comic Sans MS" FontSize="16" Foreground="DimGray"></Label>
+            <TextBox x:Name="tbox_services_search" TextChanged="tbox_services_search_TextChanged" Height="20" Width="200" FontSize="13" HorizontalAlignment="Left" Margin="40 0 0 5">
+                <TextBox.ToolTip>
+                    <ToolTip>Поиск по названию</ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+            <ComboBox Width="200" x:Name="cbox_services" SelectedIndex="0" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="40 0 0 0" KeyUp="tbox_baraCode_KeyUp" DisplayMemberPath="Name"></ComboBox>
+            <Button x:Name="btn_add_service" Click="btn_add_service_Click" Width="30" Height="30" Background="White" BorderThickness="0" Margin="-270 -30 0 0">
+                <StackPanel>
+                    <Image Source="/Resources/Добавить.png"></Image>
+                </StackPanel>
+            </Button>
+            <ListBox x:Name="lbox_services" DisplayMemberPath="Name" Visibility="Hidden" FontFamily="Comic Sans MS"  SelectionMode="Multiple" Width="200" Height="100" Margin="0 -85 0 0"></ListBox>
+        </StackPanel>
+        <Button x:Name="btn_create_order" Visibility="Hidden" Click="btn_create_order_Click" Grid.Row="4" Margin="40 -10 0 0" HorizontalAlignment="Left" Width="100" Height="30">Сформировать заказ</Button>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Штрих-код:" Margin="0 50 0 0" HorizontalAlignment="Center"></TextBlock>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <StackPanel x:Name="baracode_field" Orientation="Horizontal" Background="White" Height="228"></StackPanel>
+        </StackPanel>
+        <Button x:Name="btn_printBaracode" Click="btn_printBaracode_Click" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Margin="0 15 0 0" Width="150" Height="30">Распечатать</Button>
+        <Button Background="White" BorderBrush="White" Grid.Row="4" Grid.Column="1" Click="btn_back_Click" Foreground="Black" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Bottom" Cursor="Pen">
+            Назад
+        </Button>
+    </Grid>
+</Window>

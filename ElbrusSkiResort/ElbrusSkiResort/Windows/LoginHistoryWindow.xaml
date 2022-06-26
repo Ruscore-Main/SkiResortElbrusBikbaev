@@ -1,0 +1,47 @@
+﻿<Window x:Class="ElbrusSkiResort.Windows.LoginHistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElbrusSkiResort.Windows"
+        mc:Ignorable="d"
+        Title="История входа" Closing="Window_Closing" Height="600" Width="1000" MaxHeight="600" MaxWidth="1000" MinHeight="600" MinWidth="1000" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#76e383" Grid.Row="0" Orientation="Horizontal">
+            <Image Height="70" Margin="40 0 0 0">
+                <Image.Source>/Resources/logo.ico</Image.Source>
+            </Image>
+            <Label Content="&quot;Приэльбрусье&quot;" FontSize="30" Margin="10 0 0 0" VerticalAlignment="Center"></Label>
+            <TextBlock Text="0:00:00" x:Name="timer_display" FontFamily="Comic Sans MS" Foreground="White" FontSize="23" VerticalAlignment="Center" Margin="30 0 0 0"></TextBlock>
+        </StackPanel>
+        
+        <TextBlock Grid.Row="1" Text="История входа пользователей" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="50 0 0 0"></TextBlock>
+  
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Фильтрация по логину" FontFamily="Comic Sans MS" FontSize="16" Foreground="DimGray" Margin="0 0 20 0"></Label>
+            <ComboBox DisplayMemberPath="Login" SelectedValuePath="Login" Width="200" Height="25" SelectedIndex="0" x:Name="cbox_filter_login" Margin="0 0 300 0" SelectionChanged="cbox_filter_login_SelectionChanged"></ComboBox>
+            <CheckBox Content="Сортировать по дате" x:Name="ccbox_sort_date" FontFamily="Comic Sans MS" FontSize="16" Foreground="DimGray" Checked="ccbox_sort_date_Checked" Unchecked="ccbox_sort_date_Unchecked"></CheckBox>
+        </StackPanel>
+        
+        <DataGrid x:Name="dgrid_login_history" Grid.Row="3" Grid.Column="1" AutoGenerateColumns="False" IsReadOnly="True" FontFamily="Comic Sans MS" Margin="0 10 0 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding EmployeeSet.Login}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата авторизации" Binding="{Binding Date}" Width="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="Время авторизации" Binding="{Binding Time}" Width="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Background="White" BorderBrush="White" Grid.Row="4" Click="btn_back_Click" Foreground="Black" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Bottom" Cursor="Pen">
+            Назад
+        </Button>
+    </Grid>
+</Window>
