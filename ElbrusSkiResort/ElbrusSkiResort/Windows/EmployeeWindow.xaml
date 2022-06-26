@@ -36,7 +36,7 @@
         </StackPanel>
 
         <StackPanel x:Name="AdminActions" Grid.Row="3" Visibility="Hidden" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="150" Height="45" Margin="5">Сформировать отчет</Button>
+            <Button Width="150" Height="45" Margin="5" Click="Button_Click_4">Сформировать отчет</Button>
             <Button Width="150" Height="45" Margin="5" Click="Button_Click_2">История входа</Button>
             <Button Width="170" Height="45" Margin="5">Расходные материалы</Button>
         </StackPanel> 

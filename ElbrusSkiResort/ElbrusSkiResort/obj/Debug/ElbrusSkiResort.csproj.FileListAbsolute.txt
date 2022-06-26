@@ -31,3 +31,5 @@ D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\obj\Debug\Windows\Creat
 D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\obj\Debug\Windows\CreateOrderWindow.baml
 D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\obj\Debug\Windows\AddClientWindow.g.cs
 D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\obj\Debug\Windows\AddClientWindow.baml
+D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\obj\Debug\Windows\GeneratingReportsWindow.g.cs
+D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\obj\Debug\Windows\GeneratingReportsWindow.baml

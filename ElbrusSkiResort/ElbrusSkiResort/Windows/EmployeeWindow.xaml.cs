@@ -111,5 +111,13 @@ namespace ElbrusSkiResort.Windows
         {
             mainWindow.Show();
         }
+
+        // Сформировать отчет
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            GeneratingReportsWindow generatingReportsWindow = new GeneratingReportsWindow(_db, this);
+            generatingReportsWindow.Show();
+            this.Hide();
+        }
     }
 }

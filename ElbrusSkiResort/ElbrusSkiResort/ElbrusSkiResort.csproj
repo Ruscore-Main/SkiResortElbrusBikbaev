@@ -101,6 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SkiResortEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NumOfOrdersOrServices.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -115,6 +116,9 @@
     </Compile>
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GeneratingReportsWindow.xaml.cs">
+      <DependentUpon>GeneratingReportsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoginHistoryWindow.xaml.cs">
       <DependentUpon>LoginHistoryWindow.xaml</DependentUpon>
@@ -140,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GeneratingReportsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,8 +1,9 @@
 ﻿
 FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\App.xaml;;
 FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\MainWindow.xaml;;
-FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\EmployeeWindow.xaml;;
-FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\LoginHistoryWindow.xaml;;
-FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\CreateOrderWindow.xaml;;
 FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\AddClientWindow.xaml;;
+FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\CreateOrderWindow.xaml;;
+FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\EmployeeWindow.xaml;;
+FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\GeneratingReportsWindow.xaml;;
+FD:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\Windows\LoginHistoryWindow.xaml;;
 

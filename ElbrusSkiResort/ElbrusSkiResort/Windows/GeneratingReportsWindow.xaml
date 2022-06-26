@@ -1,0 +1,52 @@
+﻿<Window x:Class="ElbrusSkiResort.Windows.GeneratingReportsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElbrusSkiResort.Windows"
+        mc:Ignorable="d"
+        Title="Формирование отчетов" Height="900" Width="1100" MaxHeight="760" Closing="Window_Closing" MaxWidth="1100" MinHeight="900" MinWidth="1100" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="137*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#76e383" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Image Height="70" Margin="40 0 0 0">
+                <Image.Source>/Resources/logo.ico</Image.Source>
+            </Image>
+            <TextBlock Text="Приэльбрусье" FontSize="30" Margin="10 0 0 0" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="0:00:00" x:Name="timer_display" FontFamily="Comic Sans MS" Foreground="White" FontSize="23" VerticalAlignment="Center" Margin="30 0 0 0"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <TextBlock Text="Формирование отчетов" VerticalAlignment="Bottom" Margin="50 0 0 0"></TextBlock>
+            <RadioButton x:Name="rbtn_doc" IsChecked="True" GroupName="print_type" Content="Только таблица" Margin="20 45 0 0"></RadioButton>
+            <RadioButton x:Name="rbtn_graph" GroupName="print_type" Content="Только график" Margin="10 45 0 0"></RadioButton>
+            <RadioButton x:Name="rbtn_doc_and_graph" GroupName="print_type" Content="И таблица и график" Margin="10 45 0 0"></RadioButton>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="2">
+            <Button x:Name="btn_report1" Click="btn_report1_Click" Content="Количество оказанных услуг по дням за период времени" HorizontalAlignment="Left" Width="440" Height="25" Margin="50 20 0 0"></Button>
+            <Button x:Name="btn_report2" Click="btn_report2_Click" Content="Количество заказов по дням за период времени по каждой услуге" HorizontalAlignment="Left" Width="440" Height="25" Margin="50 5 0 0"></Button>
+            <Button x:Name="btn_report3" Click="btn_report3_Click" Content="Количество заказов по дням за период времени" HorizontalAlignment="Left" Width="440" Height="25" Margin="50 5 0 0"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" x:Name="reports_field">
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <DockPanel Visibility="Hidden" x:Name="report" Height="300" Width="370" HorizontalAlignment="Left">
+                <DataGrid x:Name="dgrid_report" AutoGenerateColumns="False" IsReadOnly="True" FontFamily="Comic Sans MS" HorizontalScrollBarVisibility="Visible" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical">
+                </DataGrid>
+            </DockPanel>
+        </StackPanel>
+        <TextBlock x:Name="tblock_none" Grid.Row="3" Grid.ColumnSpan="2" Text="Выберите тип отчета" Foreground="LightGray" Margin="0 180 0 0" HorizontalAlignment="Center"></TextBlock>
+        <Button Background="White" BorderBrush="White" Grid.Row="4" Grid.Column="1" Click="btn_back_Click" Foreground="Black" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Bottom" Cursor="Pen">
+            Назад
+        </Button>
+    </Grid>
+</Window>

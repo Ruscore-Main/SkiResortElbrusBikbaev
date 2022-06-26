@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\EKZ_Module\RPM_Module\ElbrusSkiResort\ElbrusSkiResort\App.xaml
-52057182054
+6-1794513803
 22116885444
-19-990741327
+21-1005594472
 2051562556
-MainWindow.xaml;Windows\AddClientWindow.xaml;Windows\CreateOrderWindow.xaml;Windows\EmployeeWindow.xaml;Windows\LoginHistoryWindow.xaml;
+MainWindow.xaml;Windows\AddClientWindow.xaml;Windows\CreateOrderWindow.xaml;Windows\EmployeeWindow.xaml;Windows\GeneratingReportsWindow.xaml;Windows\LoginHistoryWindow.xaml;
 
 False
 
