@@ -13,7 +13,7 @@ namespace ElbrusSkiResort
         public static bool limiter = true;
         public static void TimerStart()
         {
-            allTime = new TimeSpan(0, 10, 0);
+            allTime = new TimeSpan(0, 1, 0);
         }
     }
 }

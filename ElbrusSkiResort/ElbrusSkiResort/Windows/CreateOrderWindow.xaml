@@ -23,7 +23,7 @@
             <Image Height="70" Margin="40 0 0 0">
                 <Image.Source>/Resources/logo.ico</Image.Source>
             </Image>
-            <TextBlock Text="Приэльбрусье" FontSize="30" Margin="10 0 0 0" VerticalAlignment="Center"></TextBlock>
+            <Label Content="&quot;Приэльбрусье&quot;" FontSize="30" Margin="10 0 0 0" VerticalAlignment="Center"></Label>
             <TextBlock Text="0:00:00" x:Name="timer_display" FontFamily="Comic Sans MS" Foreground="White" FontSize="23" VerticalAlignment="Center" Margin="30 0 0 0"></TextBlock>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
